@@ -6,7 +6,7 @@
 
 #define EEPROM_ADDRESS 0x50
 
-//read data from address 0 - 512
+//read data from address 0 - 511
 uint8_t readDataByteWholeEEPROM(uint8_t eeprom_address, unsigned int byte_address, uint8_t &data_byte)
 {
   uint8_t result;
@@ -56,7 +56,7 @@ uint8_t readDataByteWholeEEPROM(uint8_t eeprom_address, unsigned int byte_addres
   */
 }
 
-//write data to address 0 - 512
+//write data to address 0 - 511
 uint8_t writeDataByteWholeEEPROM(uint8_t eeprom_address, unsigned int byte_address, uint8_t data_byte)
 {
   uint8_t result;
