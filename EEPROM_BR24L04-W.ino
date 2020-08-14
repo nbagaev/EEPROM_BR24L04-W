@@ -96,7 +96,7 @@ void setup()
 {
   Serial.begin(9600);
   Wire.begin();
-  unsigned int byte_address=512;
+  unsigned int byte_address=511;
   uint8_t data_byte_w = 5;
   uint8_t data_byte_r;
   uint8_t result;
