@@ -1,3 +1,4 @@
+//Arduino test sketch for ROHM EEPROM BR24L04-W 4K
 #include <Wire.h>
 
 //there is eeprom BR24L04 4Kbit 512x8
