@@ -57,7 +57,7 @@ uint8_t readDataByteWholeEEPROM(uint8_t eeprom_address, unsigned int byte_addres
 }
 
 //sequential read of up to 32 bytes
-//It is possible to read the entire memory, but the wire library only has a 32-byte buffer
+//it is possible to read the entire memory, but the wire library only has a 32-byte buffer
 uint8_t readDataBytesSequential(uint8_t eeprom_address, unsigned int byte_address, int number, uint8_t *data_bytes)
 {
   uint8_t result;
@@ -215,23 +215,23 @@ void setup()
   uint8_t data_byte_r = 255;
   uint8_t result=255;
   uint8_t data_bytes_r[32];
-  int number_r = 32;
+  uint8_t number_r = 32;
   uint8_t data_bytes_w[16];
-  int number_w = 16;
+  uint8_t number_w = 16;
 
-  //init read array
-  for (int byte_count = 0; byte_count < 32; byte_count++)
+  //initialize read array
+  for (uint8_t byte_count = 0; byte_count < 32; byte_count++)
   {
     data_bytes_r[byte_count] = 255;
   }
-  //init write array
-  for (int byte_count = 0; byte_count < 16; byte_count++)
+  //initialize write array
+  for (uint8_t byte_count = 0; byte_count < 16; byte_count++)
   {
     data_bytes_w[byte_count] = 1;
   }
   
-  /*   
-  result = readDataByteWholeEEPROM(EEPROM_ADDRESS,byte_address, data_byte_r);
+  /*    
+  result = readDataByteWholeEEPROM(EEPROM_ADDRESS, byte_address, data_byte_r);
   if(result == 0)
   {
     Serial.print("Read old data: ");
