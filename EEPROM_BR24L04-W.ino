@@ -56,7 +56,7 @@ uint8_t readDataByteWholeEEPROM(uint8_t eeprom_address, unsigned int byte_addres
   */
 }
 
-//sequential read of up to 32 bytes
+//sequential read of up to 31 bytes
 //it is possible to read the entire memory, but the wire library only has a 32-byte buffer
 uint8_t readDataBytesSequential(uint8_t eeprom_address, unsigned int byte_address, int number, uint8_t *data_bytes)
 {
@@ -214,13 +214,13 @@ void setup()
   uint8_t data_byte_w = 1;
   uint8_t data_byte_r = 255;
   uint8_t result=255;
-  uint8_t data_bytes_r[32];
-  uint8_t number_r = 32;
+  uint8_t data_bytes_r[31];
+  uint8_t number_r = 31;
   uint8_t data_bytes_w[16];
   uint8_t number_w = 16;
 
   //initialize read array
-  for (uint8_t byte_count = 0; byte_count < 32; byte_count++)
+  for (uint8_t byte_count = 0; byte_count < 31; byte_count++)
   {
     data_bytes_r[byte_count] = 255;
   }
