@@ -8,7 +8,7 @@
 #define EEPROM_ADDRESS 0x50
 
 //read 1 byte from address 0 - 511
-uint8_t readDataByteWholeEEPROM(uint8_t eeprom_address, unsigned int byte_address, uint8_t &data_byte)
+uint8_t readDataByteEntireMemory(int eeprom_address, int byte_address, uint8_t &data_byte)
 {
   uint8_t result;
   if (byte_address > 255)
@@ -58,7 +58,7 @@ uint8_t readDataByteWholeEEPROM(uint8_t eeprom_address, unsigned int byte_addres
 
 //sequential read of up to 31 bytes
 //it is possible to read the entire memory, but the wire library only has a 32-byte buffer
-uint8_t readDataBytesSequential(uint8_t eeprom_address, unsigned int byte_address, int number, uint8_t *data_bytes)
+uint8_t readDataBytesSequential(int eeprom_address, int byte_address, int number, uint8_t *data_bytes)
 {
   uint8_t result;
   Wire.beginTransmission(eeprom_address);
@@ -169,7 +169,7 @@ uint8_t pageWriteDataBytes(uint8_t eeprom_address, unsigned int byte_address, ui
 }
 
 //write 1 byte to address 0 - 511
-uint8_t writeDataByteWholeEEPROM(uint8_t eeprom_address, unsigned int byte_address, uint8_t data_byte)
+uint8_t writeDataByteEntireMemory(uint8_t eeprom_address, unsigned int byte_address, uint8_t data_byte)
 {
   uint8_t result;
   if (byte_address > 255)
@@ -231,7 +231,7 @@ void setup()
   }
   
   /*    
-  result = readDataByteWholeEEPROM(EEPROM_ADDRESS, byte_address, data_byte_r);
+  result = readDataByteEntireMemory(EEPROM_ADDRESS, byte_address, data_byte_r);
   if(result == 0)
   {
     Serial.print("Read old data: ");
@@ -253,7 +253,7 @@ void setup()
     }
   }
   
-  writeDataByteWholeEEPROM(EEPROM_ADDRESS, byte_address, data_byte_w);
+  writeDataByteEntireMemory(EEPROM_ADDRESS, byte_address, data_byte_w);
   delay(5);   //wait until write is completed
   if(result == 0)
   {
@@ -273,7 +273,7 @@ void setup()
       default: Serial.println("unknown error"); break;  
     }
   }
-  result = readDataByteWholeEEPROM(EEPROM_ADDRESS,byte_address, data_byte_r);
+  result = readDataByteEntireMemory(EEPROM_ADDRESS,byte_address, data_byte_r);
   if(result == 0)
   {
     Serial.print("Read new data: ");
@@ -299,7 +299,7 @@ void setup()
   /*
   for (int byte_count = 0; byte_count < 256; byte_count++)
   {
-    result=writeDataByteWholeEEPROM(EEPROM_ADDRESS, byte_count, byte_count);
+    result=writeDataByteEntireMemory(EEPROM_ADDRESS, byte_count, byte_count);
     delay(5);   //wait until write is completed
   }
   */
@@ -309,7 +309,7 @@ void setup()
   for (int byte_count = 255; byte_count > -1; byte_count--)
   {
     i++;
-    writeDataByteWholeEEPROM(EEPROM_ADDRESS, i, byte_count);
+    writeDataByteEntireMemory(EEPROM_ADDRESS, i, byte_count);
     delay(5);   //wait until write is completed
   }
   */ 
@@ -330,7 +330,7 @@ void setup()
   /**/
   for (int byte_count = 0; byte_count < 512; byte_count++)
   {
-    readDataByteWholeEEPROM(EEPROM_ADDRESS,byte_count, data_byte_r);
+    readDataByteEntireMemory(EEPROM_ADDRESS,byte_count, data_byte_r);
     Serial.println(data_byte_r);
   }
   
